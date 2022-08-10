@@ -22,7 +22,7 @@ To stop the example hit `ctrl+c`
 
 [source,sh]
 ----
-$ docker build -t test-market .
+$ docker build -t demo-market .
 ----
 
 === Docker run
@@ -37,5 +37,5 @@ $ docker run -p 8080:8080 \
             -e DB_SCHEME=postgres \
             -e DB_USER=postgres \
             -e DB_PASS=postgre \
-            test-market
+            demo-market
 ----
