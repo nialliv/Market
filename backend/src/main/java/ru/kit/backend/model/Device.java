@@ -20,10 +20,20 @@ public class Device {
     @Column(nullable = false)
     private int price;
 
-    @Lob
-    private String image;
-    // private Rate rate;
-    // private DeviceType type;
-    // private DeviceBrand brand;
+    @Column(name = "image_url")
+    private String imageUrl;
+
+    @OneToOne
+    @JoinColumn(name = "rate_id")
+    private Rate rate;
+
+    @OneToOne
+    @JoinColumn(name = "device_type_id")
+    private DeviceType type;
+
+
+    @OneToOne
+    @JoinColumn(name = "device_brand_id")
+    private DeviceBrand brand;
 
 }
