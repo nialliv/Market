@@ -34,12 +34,10 @@ public class Rate {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    @Column(nullable = false)
     private User userId;
     
     @OneToOne
     @JoinColumn(name = "device_id")
-    @Column(nullable = false)
     private Device deviceId;
 
     @Column(nullable = false)
