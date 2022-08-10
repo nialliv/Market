@@ -27,7 +27,7 @@ $ docker build -t test-market .
 
 === Docker run
 
-If postgres intalled on localhost run command with --network="host"
+If postgres intalled on localhost run command with `*_--network="host"_*`
 
 [source,sh]
 ----
