@@ -19,7 +19,7 @@ public class BasketDevice {
 
     @OneToOne
     @JoinColumn(name = "basket_id")
-    private Basket basket_id;
+    private Basket basketId;
 
     @OneToMany
     @JoinColumn(name = "devices")

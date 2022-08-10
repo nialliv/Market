@@ -18,9 +18,9 @@ public class Basket {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    private User user_id;
+    private User userId;
 
     @OneToOne
     @JoinColumn(name = "basket_device_id")
-    private BasketDevice basketDevice;
+    private BasketDevice basketDeviceId;
 }
