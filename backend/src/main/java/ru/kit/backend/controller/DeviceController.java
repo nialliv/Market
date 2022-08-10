@@ -18,7 +18,7 @@ public class DeviceController {
     @Autowired
     private IDeviceService deviceService;
 
-    @PostMapping(value = "/add", produces = MediaType.IMAGE_JPEG_VALUE)
+    @PostMapping(value = "/add")
     public ResponseEntity<String> addDevice(@RequestBody Device device) {
         try {
             deviceService.addDevice(device);
@@ -37,8 +37,8 @@ public class DeviceController {
     }
 
     @GetMapping("/{id}/get")
-    public String getDeviceById(@PathVariable Long id) {
-        return deviceService.getDeviceById(id).getImage();
+    public Device getDeviceById(@PathVariable Long id) {
+        return deviceService.getDeviceById(id);
     }
 
     @DeleteMapping("{id}/delete")
