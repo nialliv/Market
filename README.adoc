@@ -1,41 +1,6 @@
-=== Build 
-
-You will need to compile this example first:
-
-[source,sh]
-----
-$ mvn package -DskipTests
-----
-
 === Run
 
-To run this you need postgres
-
 [source,sh]
 ----
-$ java -jar target/backend.jar
-----
-
-To stop the example hit `ctrl+c`
-
-=== Docker build
-
-[source,sh]
-----
-$ docker build -t demo-market .
-----
-
-=== Docker run
-
-If postgres intalled on localhost run command with `*_--network="host"_*`
-
-[source,sh]
-----
-$ docker run -p 8080:8080 \
-            -e DB_HOST=localhost \
-            -e DB_PORT=5432 \
-            -e DB_SCHEME=postgres \
-            -e DB_USER=postgres \
-            -e DB_PASS=postgre \
-            demo-market
+$ docker-compose up -d
 ----
