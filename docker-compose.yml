@@ -1,0 +1,58 @@
+version: '3.7'
+services:
+
+  image-storage-app:
+    container_name: image-storage-app
+    build: ~/Pract/Java/Market/image-storage-app
+    ports:
+      - "8080:8080"
+
+  basket-app:
+    container_name: basket-app
+    build: ~/Pract/Java/Market/basket-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+    - SPRING_DATASOURSE_URL=jdbc:postgresql://postgres:5432/postgres
+    - SPRING_DATASOURCE_USERNAME=postgres
+    - SPRING_DATASOURCE_PASSWORD=postgres
+    - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+
+  client-app:
+    container_name: client-app
+    build: ~/Pract/Java/Market/client-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      - SPRING_DATASOURSE_URL=jdbc:postgresql://postgres:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+
+  product-app:
+    container_name: product-app
+    build: ~/Pract/Java/Market/product-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - image-storage-app
+    environment:
+      - SPRING_DATASOURSE_URL=jdbc:postgresql://postgres:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+
+  postgres:
+    container_name: postgres
+    image: "postgres:latest"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+# volumes:
+#   image-storage:
