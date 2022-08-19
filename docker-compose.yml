@@ -1,35 +1,11 @@
 version: '3.7'
 services:
 
-  nginx:
-    container_name: nginx
-    image: nginx:latest
+  app:
+    container_name: app
+    build: ./market
     ports:
       - "8080:8080"
-    volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-    links:
-      - image-storage-app
-      - basket-app
-      - client-app
-      - product-app
-    depends_on:
-      - image-storage-app
-      - basket-app
-      - client-app
-      - product-app
-
-  image-storage-app:
-    container_name: image-storage-app
-    build: ./image-storage-app
-    ports:
-      - "8080"
-
-  basket-app:
-    container_name: basket-app
-    build: ./basket-app
-    ports:
-      - "8080"
     depends_on:
       - postgres
     environment:
@@ -37,33 +13,6 @@ services:
     - SPRING_DATASOURCE_USERNAME=postgres
     - SPRING_DATASOURCE_PASSWORD=postgres
     - SPRING_JPA_HIBERNATE_DDL_AUTO=create
-
-  client-app:
-    container_name: client-app
-    build: ./client-app
-    ports:
-      - "8080"
-    depends_on:
-      - postgres
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=postgres
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
-
-  product-app:
-    container_name: product-app
-    build: ./product-app
-    ports:
-      - "8080"
-    depends_on:
-      - postgres
-      - image-storage-app
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=postgres
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
 
   postgres:
     container_name: postgres
