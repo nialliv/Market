@@ -56,7 +56,7 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public long deleteProductById(Long id) throws ProductNotFoundException {
         if (productRepository.findById(id).isEmpty()) {
-            throw new ProductNotFoundException("Error, this user was not found");
+            throw new ProductNotFoundException("Error, this product was not found");
         }
         productRepository.deleteById(id);
         return id;
