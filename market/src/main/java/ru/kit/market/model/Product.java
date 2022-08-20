@@ -26,12 +26,12 @@ public class Product {
 
     private Long rateId;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_type_id")
     private ProductType type;
 
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_brand_id")
     private ProductBrand brand;
 
