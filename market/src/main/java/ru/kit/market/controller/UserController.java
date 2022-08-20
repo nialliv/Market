@@ -29,6 +29,16 @@ public class UserController {
         return userService.getUsers();
     }
 
+    @GetMapping("/{id}/get")
+    public User getUserById(@PathVariable Long id) {
+        try {
+            return userService.getUserById(id);
+        } catch (UserNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     @PostMapping("/add")
     public ResponseEntity<String> addUser(@RequestBody User user) {
         try {

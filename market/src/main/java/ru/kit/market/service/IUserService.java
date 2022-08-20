@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface IUserService {
     long saveUser(User user) throws UserAlreadyExistException;
+    User getUserById(Long id) throws UserNotFoundException;
     List<User> getUsers();
     long deleteUserById(long id) throws UserNotFoundException;
 }
