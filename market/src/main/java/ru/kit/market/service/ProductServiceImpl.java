@@ -6,20 +6,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import ru.kit.market.exception.ProductAlreadyExistException;
 import ru.kit.market.exception.ProductNotFoundException;
 import ru.kit.market.model.Product;
 import ru.kit.market.repository.ProductRepository;
 
 @Service
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class ProductServiceImpl implements IProductService {
 
     @Autowired

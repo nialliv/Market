@@ -18,7 +18,7 @@ import ru.kit.market.model.User;
 import ru.kit.market.service.IUserService;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/user")
 public class UserController {
 
     @Autowired
@@ -30,12 +30,12 @@ public class UserController {
     }
 
     @GetMapping("/{id}/get")
-    public User getUserById(@PathVariable Long id) {
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
         try {
-            return userService.getUserById(id);
+            return ResponseEntity.ok().body(userService.getUserById(id));
         } catch (UserNotFoundException e) {
             e.printStackTrace();
-            return null;
+            return ResponseEntity.badRequest().body(null);
         }
     }
 

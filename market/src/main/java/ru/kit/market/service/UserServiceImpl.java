@@ -1,23 +1,16 @@
 package ru.kit.market.service;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import ru.kit.market.exception.UserAlreadyExistException;
 import ru.kit.market.exception.UserNotFoundException;
 import ru.kit.market.model.User;
 import ru.kit.market.repository.UserRepository;
 
-import java.util.List;
-
 @Service
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserServiceImpl implements IUserService {
     @Autowired
     private UserRepository userRepository;
@@ -34,10 +27,10 @@ public class UserServiceImpl implements IUserService {
     public List<User> getUsers() {
         return userRepository.findAll();
     }
-    
+
     @Override
     public User getUserById(Long id) throws UserNotFoundException {
-        if(userRepository.findById(id).isEmpty()) {
+        if (userRepository.findById(id).isEmpty()) {
             throw new UserNotFoundException("Error, this user was not found");
         } else {
             return userRepository.findById(id).get();
